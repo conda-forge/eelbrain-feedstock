@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.29.3" %}
-{% set sha256 = "23a3cfc2eec9ed8faf83f56ee116d573bf2e22abe5ed6a59aa6219dcdd8717ed" %}
+{% set version = "0.29.4" %}
+{% set sha256 = "1424c12d35f1f0b3e1e69ce362e3c3a866deec72e3819a88737410ee5d0bdc38" %}
 
 package:
   name: {{ name|lower }}
