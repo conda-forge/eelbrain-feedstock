@@ -21,6 +21,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - setuptools >=17
   host:
     - libblas
