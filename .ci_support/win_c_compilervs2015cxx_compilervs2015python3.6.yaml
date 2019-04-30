@@ -4,6 +4,8 @@ channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
+cxx_compiler:
+- vs2015
 libblas:
 - 3.8 *netlib
 libcblas:
@@ -17,3 +19,4 @@ python:
 zip_keys:
 - - python
   - c_compiler
+  - cxx_compiler
