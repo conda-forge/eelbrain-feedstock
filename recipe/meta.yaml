@@ -39,7 +39,7 @@ requirements:
     - colormath >=2.1
     - ipython
     - keyring >=5
-    - matplotlib >=2.1
+    - matplotlib >=3
     - mne >=0.17
     - nibabel >=2.0, !=2.3.0
     - olefile  # [linux]
@@ -47,7 +47,7 @@ requirements:
     - pillow
     - pysurfer >=0.8
     - nilearn
-    - scipy >=0.17
+    - scipy >=1.1
     - tqdm >=4.8
     - wxpython >=4.0.3
     - mayavi >=4.6.2
