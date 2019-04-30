@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.29.8" %}
-{% set sha256 = "bf2ae1d8931d60bdca28d1121233bb2d23dd487ba7ddb0f5c9231dbf9f30119c" %}
+{% set version = "0.30.2" %}
+{% set sha256 = "f30773bafc5246aca9e1936bc12207f4ba53289eb1f452b6f3f4c53cce0ba9f2" %}
 
 package:
   name: {{ name|lower }}
@@ -21,6 +21,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - setuptools >=17
   host:
     - libblas
@@ -38,7 +39,7 @@ requirements:
     - colormath >=2.1
     - ipython
     - keyring >=5
-    - matplotlib >=2.1
+    - matplotlib >=3
     - mne >=0.17
     - nibabel >=2.0, !=2.3.0
     - olefile  # [linux]
@@ -46,7 +47,7 @@ requirements:
     - pillow
     - pysurfer >=0.8
     - nilearn
-    - scipy >=0.17
+    - scipy >=1.1
     - tqdm >=4.8
     - wxpython >=4.0.3
     - mayavi >=4.6.2
