@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.30.4" %}
-{% set sha256 = "4dd4fa862533d97dda099b13fcdd8b8585db6c6f3ff2f6e4ea792a9c63a7535f" %}
+{% set version = "0.30.5" %}
+{% set sha256 = "38a910eb7f0c6355b14db927d76670e30a9a734781f41284a6f6517246692dc1" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   osx_is_app: True
   skip: True  # [py<36]
   # Note: --no-deps is currently required due to https://github.com/conda/conda-build/issues/3254
