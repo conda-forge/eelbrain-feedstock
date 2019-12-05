@@ -47,7 +47,8 @@ requirements:
     - pillow
     - pysurfer >=0.8
     - nilearn
-    - scipy >=1.1
+    - packaging
+    - scipy >=1.3
     - tqdm >=4.8
     - wxpython >=4.0.3
     - mayavi >=4.6.2
