@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 2
   osx_is_app: True
   skip: True  # [py<36]
   # Note: --no-deps is currently required due to https://github.com/conda/conda-build/issues/3254
@@ -39,7 +39,7 @@ requirements:
     - colormath >=2.1
     - ipython
     - keyring >=5
-    - matplotlib >=3
+    - matplotlib-base >=3
     - mne >=0.17
     - nibabel >=2.5
     - olefile  # [linux]
