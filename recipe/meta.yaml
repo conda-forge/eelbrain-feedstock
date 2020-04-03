@@ -39,7 +39,7 @@ requirements:
     - colormath >=2.1
     - ipython
     - keyring >=5
-    - matplotlib-base >=3
+    - matplotlib-base >=3, <3.1  # https://github.com/matplotlib/matplotlib/issues/15410
     - mne >=0.17
     - nibabel >=2.5
     - olefile  # [linux]
