@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.31.1" %}
-{% set sha256 = "11c35e148d88844253e068e803fa6b9c9474c0baaf6a2ee959801b89d5dac73b" %}
+{% set version = "0.31.2" %}
+{% set sha256 = "0bb44ed29bd25803b6fcfe8698022f3f0e242899096da1b49bf5499084417179" %}
 
 package:
   name: {{ name|lower }}
@@ -11,12 +11,12 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
-  osx_is_app: True
-  skip: True  # [py<36]
+  number: 0
+  osx_is_app: true
+  skip: true  # [py<36]
   # Note: --no-deps is currently required due to https://github.com/conda/conda-build/issues/3254
   # Once resolved, it should be removed.
-  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   build:
@@ -39,7 +39,7 @@ requirements:
     - colormath >=2.1
     - ipython
     - keyring >=5
-    - matplotlib-base >=3
+    - matplotlib-base >=3, <3.1  # https://github.com/matplotlib/matplotlib/issues/15410
     - mne >=0.17
     - nibabel >=2.5
     - olefile  # [linux]
@@ -64,7 +64,7 @@ test:
 
 about:
   home: http://eelbrain.readthedocs.io
-  summary: 'MEG/EEG analysis tools'
+  summary: MEG/EEG analysis tools
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
