@@ -5,7 +5,7 @@ Home: http://eelbrain.readthedocs.io
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: MEG/EEG analysis tools
 
