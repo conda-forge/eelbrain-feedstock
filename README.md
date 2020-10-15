@@ -5,11 +5,13 @@ Home: http://eelbrain.readthedocs.io
 
 Package license: BSD-3-Clause
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/eelbrain-feedstock/blob/master/LICENSE.txt)
 
 Summary: MEG/EEG analysis tools
 
+Development: https://github.com/christianbrodbeck/eelbrain
 
+Documentation: http://eelbrain.readthedocs.io/
 
 Current build status
 ====================
