@@ -40,7 +40,7 @@ requirements:
     - ipython
     - keyring >=5
     - matplotlib-base >=3
-    - mne >=0.17
+    - mne >=0.19
     - nibabel >=2.5
     - olefile  # [linux]
     - {{ pin_compatible('numpy') }}
@@ -50,9 +50,10 @@ requirements:
     - packaging
     - scipy >=1.3
     - numba
-    - tqdm >=4.19
+    - tqdm >=4.40
     - wxpython >=4.0.3
     - mayavi >=4.6.2
+    - pyface !=7.2.0  # broken for wx
 
 test:
   imports:
