@@ -26,11 +26,10 @@ requirements:
     - libcblas
     - python
     - python.app  # [osx]
-    - olefile  # [win or linux]
     - pywin32-ctypes  # [win]
     - pip
     - cython >=0.21
-    - numpy >=1.20
+    - numpy
   run:
     - python
     - python.app  # [osx]
@@ -41,7 +40,7 @@ requirements:
     - mne >=0.19
     - nibabel >=2.5
     - olefile  # [linux]
-    - {{ pin_compatible('numpy') }}
+    - {{ pin_compatible('numpy', lower_bound='1.20') }}
     - pillow
     - pysurfer >=0.9
     - nilearn
