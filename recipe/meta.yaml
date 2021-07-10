@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.35.1" %}
-{% set sha256 = "f72c6d943352a43693e693316bd9420127f299fc859f77094f94582120171f16" %}
+{% set version = "0.36a0" %}
+{% set sha256 = "2cf7b06ec132172fd5f2f6149655eebfa15723bdee2558456f2f8d8631d4aac1" %}
 
 package:
   name: {{ name|lower }}
@@ -38,7 +38,7 @@ requirements:
     - colormath >=2.1
     - ipython
     - keyring >=5
-    - matplotlib-base >=3.3.4
+    - matplotlib-base >=3.4
     - mne >=0.19
     - nibabel >=2.5
     - olefile  # [linux]
@@ -68,7 +68,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
-  doc_url: http://eelbrain.readthedocs.io/
+  doc_url: http://eelbrain.readthedocs.io/en/latest/
   dev_url: https://github.com/christianbrodbeck/eelbrain
 
 extra:

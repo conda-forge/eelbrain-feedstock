@@ -11,7 +11,7 @@ Summary: MEG/EEG analysis tools
 
 Development: https://github.com/christianbrodbeck/eelbrain
 
-Documentation: http://eelbrain.readthedocs.io/
+Documentation: http://eelbrain.readthedocs.io/en/latest/
 
 Current build status
 ====================
