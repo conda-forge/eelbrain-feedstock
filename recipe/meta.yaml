@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.35.1" %}
-{% set sha256 = "f72c6d943352a43693e693316bd9420127f299fc859f77094f94582120171f16" %}
+{% set version = "0.36" %}
+{% set sha256 = "e57bd48531fbec57615ccfdc19b84d99d2e5b477848f522f173c74e0fed3f71b" %}
 
 package:
   name: {{ name|lower }}
@@ -38,7 +38,7 @@ requirements:
     - colormath >=2.1
     - ipython
     - keyring >=5
-    - matplotlib-base >=3.3.4
+    - matplotlib-base >=3.4
     - mne >=0.19
     - nibabel >=2.5
     - olefile  # [linux]
