@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.36" %}
-{% set sha256 = "e57bd48531fbec57615ccfdc19b84d99d2e5b477848f522f173c74e0fed3f71b" %}
+{% set version = "0.36.1" %}
+{% set sha256 = "9fed4365d6811b5d94ee6e5b97d4786a526c9b339b5d2ef61633dbe0ca511a8f" %}
 
 package:
   name: {{ name|lower }}
@@ -14,9 +14,7 @@ build:
   number: 0
   osx_is_app: true
   skip: true  # [py<38]
-  # Note: --no-deps is currently required due to https://github.com/conda/conda-build/issues/3254
-  # Once resolved, it should be removed.
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
