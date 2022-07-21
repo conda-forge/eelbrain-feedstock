@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.38a2" %}
-{% set sha256 = "09f5519db8cf3b71fa9139769c15b87945a28b300e75f617405c8dfaa777d1b8" %}
+{% set version = "0.38a3" %}
+{% set sha256 = "a9c33f01f50241124d4ee1a0fdffabb523c9ccba665096d61ac06a11ed98317e" %}
 
 package:
   name: {{ name|lower }}
@@ -23,12 +23,14 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - setuptools >=17
+    - packaging
   host:
     - libblas
     - libcblas
     - python
     - python.app  # [osx]
     - pywin32-ctypes  # [win]
+    - packaging
     - pip
     - cython >=0.21
     - numpy >=1.20
@@ -43,10 +45,10 @@ requirements:
     - nibabel >=2.5
     - olefile  # [linux]
     - {{ pin_compatible('numpy', lower_bound='1.20') }}
+    - packaging
     - pillow
     - pysurfer >=0.9
     - nilearn
-    - packaging
     - scipy >=1.5
     - numba
     - tqdm >=4.40
