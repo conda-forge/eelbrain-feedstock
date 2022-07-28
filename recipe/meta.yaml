@@ -29,7 +29,7 @@ requirements:
     - pywin32-ctypes  # [win]
     - pip
     - cython >=0.21
-    - numpy >=1.20, <=1.21
+    - numpy >=1.20, <1.23
   run:
     - python
     - python.app  # [osx]
@@ -41,7 +41,7 @@ requirements:
     - nibabel >=2.5
     - pymatreader
     - olefile  # [linux]
-    - {{ pin_compatible('numpy', lower_bound='1.20', upper_bound='1.21') }}
+    - {{ pin_compatible('numpy', lower_bound='1.20', upper_bound='1.22') }}
     - pillow
     - pysurfer >=0.9
     - nilearn
