@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.38.4" %}
-{% set sha256 = "51ab9bbb197266bfa6ddbba4a038d0641e8cb5b6b95505c89a1251f725a9388f" %}
+{% set version = "0.38.5" %}
+{% set sha256 = "96c870aebde2dca2ff57ec4a7dad60ad06b7bbe7b58c152479ce4f76a033c2e2" %}
 
 package:
   name: {{ name|lower }}
@@ -21,7 +21,7 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython                                 # [build_platform != target_platform]
-    - numpy >=1.20, <1.23                    # [build_platform != target_platform]
+    - numpy >=1.20, <1.24                    # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - setuptools >=17
@@ -33,14 +33,14 @@ requirements:
     - packaging
     - pip
     - cython >=0.21
-    - numpy >=1.20, <1.23
+    - numpy >=1.20, <1.24
   run:
     - python
     - python.app  # [osx]
     - colormath >=2.1
     - ipython
     - keyring >=5
-    - matplotlib-base >=3.4
+    - matplotlib-base >=3.6
     - mne >=0.19
     - nibabel >=2.5
     - pymatreader
