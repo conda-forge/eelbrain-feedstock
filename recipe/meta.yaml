@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.38a4" %}
-{% set sha256 = "a1c8e01f187b84e0a7781e1d97586d86019109083d74777fd211d9f625a72748" %}
+{% set version = "0.39a0" %}
+{% set sha256 = "28bc9451e8da761e22b2c1383775881bbcdd8a3385133c4f364dca42df01bf85" %}
 
 package:
   name: {{ name|lower }}
@@ -14,41 +14,41 @@ build:
   number: 0
   osx_is_app: true
   skip: true  # [py<38]
-  # Note: --no-deps is currently required due to https://github.com/conda/conda-build/issues/3254
-  # Once resolved, it should be removed.
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - numpy >=1.20, <1.24                    # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - setuptools >=17
-    - packaging
   host:
     - libblas
     - libcblas
     - python
     - python.app  # [osx]
-    - pywin32-ctypes  # [win]
     - packaging
     - pip
     - cython >=0.21
-    - numpy >=1.20
+    - numpy >=1.20, <1.24
   run:
     - python
     - python.app  # [osx]
     - colormath >=2.1
     - ipython
     - keyring >=5
-    - matplotlib-base >=3.4
+    - matplotlib-base >=3.6
     - mne >=0.19
     - nibabel >=2.5
-    - olefile  # [linux]
-    - {{ pin_compatible('numpy', lower_bound='1.20') }}
-    - packaging
+    - pymatreader
+    - {{ pin_compatible('numpy') }}
     - pillow
     - pysurfer >=0.9
     - nilearn
+    - packaging
     - scipy >=1.5
     - numba
     - tqdm >=4.40
@@ -70,7 +70,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE.txt
-  doc_url: http://eelbrain.readthedocs.io/en/latest/
+  doc_url: http://eelbrain.readthedocs.io/
   dev_url: https://github.com/christianbrodbeck/eelbrain
 
 extra:
