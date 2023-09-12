@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.40a0" %}
-{% set sha256 = "a761db5151893a58104cc9b18caa0d64af10c9e579045040d909d88b32dfb93a" %}
+{% set version = "0.40a1" %}
+{% set sha256 = "69c06005824d2794e0c9dac73bf99ea5bb4a4eaee2eb20ba1e264999e7ae286e" %}
 
 package:
   name: {{ name|lower }}
@@ -37,6 +37,7 @@ requirements:
   run:
     - python
     - python.app  # [osx]
+    - appnope >=0.1.3  # [osx]
     - colormath >=2.1
     - ipython
     - keyring >=5
