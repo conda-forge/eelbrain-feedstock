@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.39.10" %}
-{% set sha256 = "0ace21cf41f0a7254ab7874e539f16365eec08faae1045a1d03ccf97d4e3f756" %}
+{% set version = "0.39.11" %}
+{% set sha256 = "7da3faa37b4bc1a2ebe170c20ceab84e5ae38268338c195a596bffb993e147c7" %}
 
 package:
   name: {{ name|lower }}
@@ -23,6 +23,7 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - numpy >=1.20, <1.24                    # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - setuptools >=17
   host:
@@ -48,7 +49,7 @@ requirements:
     - {{ pin_compatible('numpy') }}
     - pillow
     - pysurfer >=0.9
-    - nilearn
+    - nilearn >=0.10.4
     - packaging
     - scipy >=1.5
     - numba
