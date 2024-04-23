@@ -49,7 +49,7 @@ requirements:
     - {{ pin_compatible('numpy') }}
     - pillow
     - pysurfer >=0.9
-    - nilearn
+    - nilearn >=0.10.4
     - packaging
     - scipy >=1.5
     - numba
