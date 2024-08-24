@@ -44,7 +44,7 @@ requirements:
     - ipython
     - keyring >=5
     - matplotlib-base >=3.6
-    - mne >=0.19
+    - mne-base >=0.19
     - nibabel >=2.5
     - pymatreader
     - {{ pin_compatible('numpy') }}
