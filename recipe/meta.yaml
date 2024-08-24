@@ -41,6 +41,7 @@ requirements:
     - python.app  # [osx]
     - appnope >=0.1.3  # [osx]
     - colormath >=2.1
+    - imageio
     - ipython
     - keyring >=5
     - matplotlib-base >=3.6
