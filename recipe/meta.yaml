@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.40b1" %}
-{% set sha256 = "a641e8ec909be21c472c1bf108ab14bd3086d0ebd9beb8ea00f62ddc083da00b" %}
+{% set version = "0.40b2" %}
+{% set sha256 = "385d4690916cdc8a37af982d1f3289aa80f02f35d2db2a2face259770a39df27" %}
 
 package:
   name: {{ name|lower }}
@@ -34,7 +34,7 @@ requirements:
     - packaging
     - pip
     - setuptools
-    - cython >=0.21
+    - cython >=3
     - numpy >=1.20
   run:
     - python
