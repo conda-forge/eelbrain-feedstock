@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.40" %}
-{% set sha256 = "974b77b697b9f8e143ccb497535d17f7ecc1e9313157e90eff0f4574ed642e3d" %}
+{% set version = "0.40.1" %}
+{% set sha256 = "e7f86387b1c5fcf70a9cfebd30ea05c2c44af2dea49577d0fa66d0858a9826b5" %}
 
 package:
   name: {{ name|lower }}
@@ -11,17 +11,18 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   osx_is_app: true
   skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . -vv
 
+# Pin numpy major version because cythonize is sensitive to it
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython                                 # [build_platform != target_platform]
-    - numpy >=1.20                           # [build_platform != target_platform]
+    - numpy >=1.20, <2                       # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
@@ -35,7 +36,7 @@ requirements:
     - pip
     - setuptools
     - cython >=3
-    - numpy >=1.20
+    - numpy >=1.20, <2
   run:
     - python
     - python.app  # [osx]
