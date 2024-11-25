@@ -16,6 +16,7 @@ build:
   skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . -vv
 
+# Pin numpy major version because cythonize is sensitive to it
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
