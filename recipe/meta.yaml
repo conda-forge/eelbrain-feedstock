@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.40.2" %}
-{% set sha256 = "b1add73e46a97561768211907234527768d9cb6bcaedbff6c18f490e96b2f8b4" %}
+{% set version = "0.40.3" %}
+{% set sha256 = "6a4938360dcc8eb77f09ed14719a3c181a91a7dd595fdf3d4cad7d2821f9861d" %}
 
 package:
   name: {{ name|lower }}
@@ -22,7 +22,7 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython                                 # [build_platform != target_platform]
-    - numpy >=1.20, <2                       # [build_platform != target_platform]
+    - numpy >=1.20,<2                        # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
@@ -36,7 +36,7 @@ requirements:
     - pip
     - setuptools
     - cython >=3
-    - numpy >=1.20, <2
+    - numpy >=1.20,<2
   run:
     - python
     - python.app  # [osx]
@@ -51,12 +51,12 @@ requirements:
     - pymatreader
     - {{ pin_compatible('numpy') }}
     - pillow
-    - pysurfer >=0.9
+    - pysurfer >=0.11.2
     - nilearn
     - packaging
     - scipy >=1.5
     - tqdm >=4.40
-    - wxpython >=4.0.3, !=4.1.0
+    - wxpython >=4.0.3,!=4.1.0
     - mayavi >=4.6.2
     - pyface !=7.2.0  # broken for wx
 
