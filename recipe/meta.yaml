@@ -51,7 +51,7 @@ requirements:
     - pymatreader
     - {{ pin_compatible('numpy') }}
     - pillow
-    - pysurfer >=0.9
+    - pysurfer >=0.11.2
     - nilearn
     - packaging
     - scipy >=1.5
