@@ -36,7 +36,7 @@ requirements:
     - pip
     - setuptools
     - cython >=3
-    - numpy >=2
+    - numpy
   run:
     - python
     - python.app  # [osx]
@@ -46,18 +46,19 @@ requirements:
     - ipython
     - keyring >=5
     - matplotlib-base >=3.6
+    - mayavi >=4.6.2
     - mne-base >=0.19
     - nibabel >=2.5
+    - nilearn
+    - numpy >=1.20
     - pymatreader
     - pillow
+    - pyface !=7.2.0  # broken for wx
     - pysurfer >=0.11.2
-    - nilearn
     - packaging
     - scipy >=1.5
     - tqdm >=4.40
     - wxpython >=4.0.3,!=4.1.0
-    - mayavi >=4.6.2
-    - pyface !=7.2.0  # broken for wx
 
 test:
   imports:
