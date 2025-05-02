@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.40.3" %}
-{% set sha256 = "6a4938360dcc8eb77f09ed14719a3c181a91a7dd595fdf3d4cad7d2821f9861d" %}
+{% set version = "0.40.4" %}
+{% set sha256 = "b8295b4b199aff439d7c1e329bc75e311d1ef07eb1d40fce3532c345bda6c907" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   osx_is_app: true
   skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . -vv
@@ -22,7 +22,7 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython                                 # [build_platform != target_platform]
-    - numpy >=1.20,<2                        # [build_platform != target_platform]
+    - numpy >=2                              # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
@@ -36,7 +36,7 @@ requirements:
     - pip
     - setuptools
     - cython >=3
-    - numpy >=1.20,<2
+    - numpy >=2
   run:
     - python
     - python.app  # [osx]
@@ -46,19 +46,19 @@ requirements:
     - ipython
     - keyring >=5
     - matplotlib-base >=3.6
+    - mayavi >=4.6.2
     - mne-base >=0.19
     - nibabel >=2.5
-    - pymatreader
-    - {{ pin_compatible('numpy') }}
-    - pillow
-    - pysurfer >=0.11.2
     - nilearn
+    - numpy >=1.20
+    - pymatreader
+    - pillow
+    - pyface !=7.2.0  # broken for wx
+    - pysurfer >=0.11.2
     - packaging
     - scipy >=1.5
     - tqdm >=4.40
     - wxpython >=4.0.3,!=4.1.0
-    - mayavi >=4.6.2
-    - pyface !=7.2.0  # broken for wx
 
 test:
   imports:
