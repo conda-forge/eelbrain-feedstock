@@ -22,7 +22,7 @@ requirements:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython                                 # [build_platform != target_platform]
-    - numpy >=1.20,<2                        # [build_platform != target_platform]
+    - numpy >=2                              # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
@@ -36,7 +36,7 @@ requirements:
     - pip
     - setuptools
     - cython >=3
-    - numpy >=1.20,<2
+    - numpy >=2
   run:
     - python
     - python.app  # [osx]
