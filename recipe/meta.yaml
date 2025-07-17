@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 3
   osx_is_app: true
   skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . -vv
@@ -57,6 +57,7 @@ requirements:
     - pysurfer >=0.11.2
     - packaging
     - scipy >=1.5
+    - seaborn
     - tqdm >=4.40
     - wxpython >=4.0.3,!=4.1.0
 
