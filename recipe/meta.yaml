@@ -57,6 +57,7 @@ requirements:
     - pysurfer >=0.11.2
     - packaging
     - scipy >=1.5
+    - seaborn
     - tqdm >=4.40
     - wxpython >=4.0.3,!=4.1.0
 
