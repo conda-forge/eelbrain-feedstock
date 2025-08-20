@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.40.4" %}
-{% set sha256 = "b8295b4b199aff439d7c1e329bc75e311d1ef07eb1d40fce3532c345bda6c907" %}
+{% set version = "0.41" %}
+{% set sha256 = "38f12ae59f80ebbefdbf4b0dd0f7df43b71e5faaf4c0733215858c0d84e10237" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 3
+  number: 0
   osx_is_app: true
   skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . -vv
