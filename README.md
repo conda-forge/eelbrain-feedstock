@@ -160,14 +160,14 @@ Current release info
 Installing eelbrain
 ===================
 
-Installing `eelbrain` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `eelbrain` from the `conda-forge/label/eelbrain_dev` channel can be achieved by adding `conda-forge/label/eelbrain_dev` to your channels with:
 
 ```
-conda config --add channels conda-forge
+conda config --add channels conda-forge/label/eelbrain_dev
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `eelbrain` can be installed with `conda`:
+Once the `conda-forge/label/eelbrain_dev` channel has been enabled, `eelbrain` can be installed with `conda`:
 
 ```
 conda install eelbrain
@@ -182,26 +182,26 @@ mamba install eelbrain
 It is possible to list all of the versions of `eelbrain` available on your platform with `conda`:
 
 ```
-conda search eelbrain --channel conda-forge
+conda search eelbrain --channel conda-forge/label/eelbrain_dev
 ```
 
 or with `mamba`:
 
 ```
-mamba search eelbrain --channel conda-forge
+mamba search eelbrain --channel conda-forge/label/eelbrain_dev
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search eelbrain --channel conda-forge
+mamba repoquery search eelbrain --channel conda-forge/label/eelbrain_dev
 
 # List packages depending on `eelbrain`:
-mamba repoquery whoneeds eelbrain --channel conda-forge
+mamba repoquery whoneeds eelbrain --channel conda-forge/label/eelbrain_dev
 
 # List dependencies of `eelbrain`:
-mamba repoquery depends eelbrain --channel conda-forge
+mamba repoquery depends eelbrain --channel conda-forge/label/eelbrain_dev
 ```
 
 
