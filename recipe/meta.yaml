@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.41" %}
-{% set sha256 = "38f12ae59f80ebbefdbf4b0dd0f7df43b71e5faaf4c0733215858c0d84e10237" %}
+{% set version = "0.42.0a0" %}
+{% set sha256 = "54debcc0abde37c8a1d262119567ee1d5b5fec0500e11904436faacaa4e6993b" %}
 
 package:
   name: {{ name|lower }}
@@ -47,6 +47,7 @@ requirements:
     - matplotlib-base >=3.6
     - mayavi >=4.6.2
     - mne-base >=0.19
+    - mne-bids
     - nibabel >=2.5
     - nilearn
     - numpy >=1.20
