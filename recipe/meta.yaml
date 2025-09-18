@@ -1,27 +1,27 @@
 {% set name = "eelbrain" %}
-{% set version = "0.40b2" %}
-{% set sha256 = "385d4690916cdc8a37af982d1f3289aa80f02f35d2db2a2face259770a39df27" %}
+{% set version = "0.41" %}
+{% set sha256 = "38f12ae59f80ebbefdbf4b0dd0f7df43b71e5faaf4c0733215858c0d84e10237" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
   number: 0
   osx_is_app: true
-  skip: true  # [py<38]
   script: {{ PYTHON }} -m pip install . -vv
 
+# Pin numpy major version because cythonize is sensitive to it
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython                                 # [build_platform != target_platform]
-    - numpy >=1.20                           # [build_platform != target_platform]
+    - numpy >=2                              # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
@@ -29,13 +29,13 @@ requirements:
   host:
     - libblas
     - libcblas
-    - python
+    - python {{ python }}
     - python.app  # [osx]
     - packaging
     - pip
     - setuptools
     - cython >=3
-    - numpy >=1.20
+    - numpy >=2
   run:
     - python
     - python.app  # [osx]
@@ -45,19 +45,20 @@ requirements:
     - ipython
     - keyring >=5
     - matplotlib-base >=3.6
+    - mayavi >=4.6.2
     - mne-base >=0.19
     - nibabel >=2.5
-    - pymatreader
-    - {{ pin_compatible('numpy') }}
-    - pillow
-    - pysurfer >=0.9
     - nilearn
+    - numpy >=1.20
+    - pymatreader
+    - pillow
+    - pyface !=7.2.0  # broken for wx
+    - pysurfer >=0.11.2
     - packaging
     - scipy >=1.5
+    - seaborn
     - tqdm >=4.40
-    - wxpython >=4.0.3, !=4.1.0
-    - mayavi >=4.6.2
-    - pyface !=7.2.0  # broken for wx
+    - wxpython >=4.0.3,!=4.1.0
 
 test:
   imports:
