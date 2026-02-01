@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.42.0a3" %}
-{% set sha256 = "f4a45d5c6b255c9668c5a6a40fc8244acffd37de473eb28cfb3da24210588bc5" %}
+{% set version = "0.42.0a4" %}
+{% set sha256 = "5bc1dd131fb7fb99da39115973f9800aad389163c54fe857d51ae602abb206d3" %}
 
 package:
   name: {{ name|lower }}
@@ -12,6 +12,7 @@ source:
 
 build:
   number: 0
+  skip: true  # [py < 312]
   osx_is_app: true
   script: {{ PYTHON }} -m pip install . -vv
 
@@ -48,11 +49,11 @@ requirements:
     - keyring >=5
     - matplotlib-base >=3.6
     - mayavi >=4.6.2
-    - mne-base >=0.19
+    - mne-base >=1.6
     - mne-bids
     - nibabel >=2.5
     - nilearn
-    - numpy >=1.20
+    - numpy >=2
     - pymatreader
     - pillow
     - pyface !=7.2.0  # broken for wx
