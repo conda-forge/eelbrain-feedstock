@@ -12,6 +12,7 @@ source:
 
 build:
   number: 0
+  skip: true  # [py < 312]
   osx_is_app: true
   script: {{ PYTHON }} -m pip install . -vv
 
@@ -52,7 +53,7 @@ requirements:
     - mne-bids
     - nibabel >=2.5
     - nilearn
-    - numpy >=1.20
+    - numpy >=2
     - pymatreader
     - pillow
     - pyface !=7.2.0  # broken for wx
