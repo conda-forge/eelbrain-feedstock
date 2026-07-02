@@ -31,7 +31,7 @@ requirements:
     - libblas
     - libcblas
     - llvm-openmp  # [osx and x86_64]
-    - python {{ python }}
+    - python
     - python.app  # [osx]
     - packaging
     - pip
