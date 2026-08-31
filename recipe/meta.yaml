@@ -47,6 +47,7 @@ requirements:
     - imageio
     - ipython
     - keyring >=5
+    - libclang
     - matplotlib-base >=3.6
     - mayavi >=4.6.2
     - mne-base >=1.6
@@ -56,7 +57,9 @@ requirements:
     - numpy >=2
     - pymatreader
     - pillow
+    - psutil
     - pyface !=7.2.0  # broken for wx
+    - pyparsing >=3
     - pysurfer >=0.11.2
     - packaging
     - scipy >=1.5
