@@ -1,0 +1,131 @@
+# Opens a version-bump PR against the `dev` branch whenever the newest release of
+# eelbrain on PyPI is a pre-release.  Merging that PR builds the pre-release and
+# uploads it to the `conda-forge/label/eelbrain_dev` channel (the `dev` branch sets
+# `channel_targets: conda-forge eelbrain_dev` in recipe/conda_build_config.yaml).
+#
+# The regro-cf-autotick-bot cannot do this: its PyPI source deliberately ignores
+# pre-releases, and it only ever opens PRs against the default branch.
+#
+# This file has to live on the default branch (`main`) because GitHub only runs
+# `schedule` triggers for workflows on the default branch; it operates on `dev`.
+
+name: Update pre-release on dev
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to update to (default: newest pre-release on PyPI)'
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    name: Check PyPI for a new pre-release
+    if: github.event_name == 'workflow_dispatch' || github.repository == 'conda-forge/eelbrain-feedstock'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout dev
+        uses: actions/checkout@v6
+        with:
+          ref: dev
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install packaging
+
+      - name: Update recipe
+        id: recipe
+        env:
+          FORCED_VERSION: ${{ inputs.version }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import re
+          import urllib.request
+
+          from packaging.version import InvalidVersion, Version
+
+          PACKAGE = 'eelbrain'
+          RECIPE = 'recipe/meta.yaml'
+
+          def report(message, version=''):
+              print(message)
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as fid:
+                  fid.write(f'version={version}\n')
+
+          recipe = open(RECIPE).read()
+          current = re.search(r'{%\s*set version\s*=\s*"([^"]+)"\s*%}', recipe).group(1)
+          with urllib.request.urlopen(f'https://pypi.org/pypi/{PACKAGE}/json') as fid:
+              releases = json.load(fid)['releases']
+
+          def sdist(version):
+              "The source distribution for version, if there is a usable one"
+              for file in releases.get(version, []):
+                  if file['packagetype'] == 'sdist' and not file.get('yanked'):
+                      return file
+
+          forced = os.environ.get('FORCED_VERSION', '').strip()
+          if forced:
+              target = forced
+          else:
+              candidates = []
+              for version in releases:
+                  try:
+                      parsed = Version(version)
+                  except InvalidVersion:
+                      continue
+                  if sdist(version):
+                      candidates.append((parsed, version))
+              parsed, target = max(candidates)
+              if not parsed.is_prerelease:
+                  report(f'Newest release on PyPI is {target}, which is not a pre-release')
+                  raise SystemExit
+          if Version(target) <= Version(current):
+              report(f'Not updating the dev branch from {current} to {target}')
+              raise SystemExit
+
+          file = sdist(target)
+          if file is None:
+              report(f'{target} has no source distribution on PyPI')
+              raise SystemExit
+
+          recipe = re.sub(r'({%\s*set version\s*=\s*")[^"]+(")', lambda m: m[1] + target + m[2], recipe, count=1)
+          recipe = re.sub(r'({%\s*set sha256\s*=\s*")[^"]+(")', lambda m: m[1] + file['digests']['sha256'] + m[2], recipe, count=1)
+          recipe = re.sub(r'(?m)^(\s*number:\s*)\d+$', lambda m: m[1] + '0', recipe, count=1)
+          open(RECIPE, 'w').write(recipe)
+          report(f'Updating {current} -> {target}', target)
+          PY
+
+      - name: Open pull request
+        if: steps.recipe.outputs.version != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.recipe.outputs.version }}
+        run: |
+          BRANCH="prerelease/$VERSION"
+          if git ls-remote --exit-code --heads origin "$BRANCH" > /dev/null; then
+            echo "$BRANCH already exists, nothing to do"
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c "$BRANCH"
+          git commit -am "V: $VERSION"
+          git push origin "$BRANCH"
+          gh pr create --base dev --head "$BRANCH" \
+            --title "V: $VERSION" \
+            --body "Automatic update to the pre-release \`$VERSION\`, found on PyPI by [\`${GITHUB_WORKFLOW}\`](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}).
+
+          Merging this builds \`$VERSION\` and uploads it to \`conda-forge/label/eelbrain_dev\`.
+
+          Note that CI does not run on this PR, because GitHub does not start workflow runs for pull requests opened with the \`GITHUB_TOKEN\`; the builds start once the PR is merged into \`dev\`." \
+            || echo "::warning::Could not open the PR; open it by hand at ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/compare/dev...${BRANCH}?expand=1"
