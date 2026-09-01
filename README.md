@@ -51,20 +51,6 @@ Current build status
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/eelbrain-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.13.____cp313" alt="variant">
                 </a>
               </td>
-            </tr><tr>
-              <td>win_64_python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6230&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/eelbrain-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_python3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=6230&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/eelbrain-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.13.____cp313" alt="variant">
-                </a>
-              </td>
             </tr>
           </tbody>
         </table>
@@ -90,31 +76,73 @@ conda config --add channels conda-forge/label/eelbrain_dev
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge/label/eelbrain_dev` channel has been enabled, `eelbrain` can be installed with `conda`:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda install eelbrain
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba install eelbrain
 ```
 
-It is possible to list all of the versions of `eelbrain` available on your platform with `conda`:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add eelbrain
+# for installing globally
+pixi global install eelbrain
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `eelbrain` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search eelbrain --channel conda-forge/label/eelbrain_dev
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba search eelbrain --channel conda-forge/label/eelbrain_dev
 ```
 
-Alternatively, `mamba repoquery` may provide more information:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search eelbrain --channel conda-forge/label/eelbrain_dev
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
 
 ```
 # Search all versions available on your platform:
@@ -126,6 +154,8 @@ mamba repoquery whoneeds eelbrain --channel conda-forge/label/eelbrain_dev
 # List dependencies of `eelbrain`:
 mamba repoquery depends eelbrain --channel conda-forge/label/eelbrain_dev
 ```
+
+</details>
 
 
 About conda-forge
