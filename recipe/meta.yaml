@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py < 312]
   osx_is_app: true
   script: {{ PYTHON }} -m pip install . -vv
@@ -35,7 +35,8 @@ requirements:
     - python.app  # [osx]
     - packaging
     - pip
-    - setuptools
+    - setuptools >=70.1.0
+    - setuptools_scm >=6.2  # Required for embedding version
     - cython >=3
     - numpy >=2
   run:
@@ -68,6 +69,8 @@ requirements:
     - wxpython >=4.0.3,!=4.1.0
 
 test:
+  commands:
+    - python -c "from importlib.metadata import version; import eelbrain; assert version('eelbrain') == '{{ version }}'; assert eelbrain.__version__ == '{{ version }}'"
   imports:
     - eelbrain
     - eelbrain.load
