@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.43.0a3" %}
-{% set sha256 = "60a8a37575ea578dc741d68700909f364b7ecd505a6056b1c3ad3c71df1a9637" %}
+{% set version = "0.43.0b0" %}
+{% set sha256 = "c14de83ecfc4ac8900993671da1f9338c5a2f939ff3cdd127570b49fb2f441a5" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [py < 312]
   osx_is_app: true
   script: {{ PYTHON }} -m pip install . -vv
@@ -51,7 +51,7 @@ requirements:
     - libclang
     - matplotlib-base >=3.6
     - mayavi >=4.6.2
-    - mne-base >=1.6
+    - mne-base >=1.13
     - mne-bids
     - nibabel >=2.5
     - nilearn
@@ -62,11 +62,12 @@ requirements:
     - pyface !=7.2.0  # broken for wx
     - pyparsing >=3
     - pysurfer >=0.11.2
+    - python-graphviz
     - packaging
     - scipy >=1.5
     - seaborn
     - tqdm >=4.40
-    - wxpython >=4.0.3,!=4.1.0
+    - wxpython >4.2.1
 
 test:
   commands:
