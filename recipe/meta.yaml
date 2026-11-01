@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.43.0b2" %}
-{% set sha256 = "7774ecae69e1340d761f7ba2268c02f8459af8f83bc9c06073e6dd99da914367" %}
+{% set version = "0.43.0b3" %}
+{% set sha256 = "1b5cc56b4f23f1415cc203f95202444c679bf898547b6d626873d841063a55c2" %}
 
 package:
   name: {{ name|lower }}
@@ -48,7 +48,6 @@ requirements:
     - imageio
     - ipython
     - keyring >=5
-    - libclang
     - matplotlib-base >=3.6
     - mayavi >=4.6.2
     - mne-base >=1.13
@@ -58,7 +57,6 @@ requirements:
     - numpy >=2
     - pymatreader
     - pillow
-    - psutil
     - pyface !=7.2.0  # broken for wx
     - pyparsing >=3
     - pysurfer >=0.11.2
