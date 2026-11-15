@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.43.0b3" %}
-{% set sha256 = "1b5cc56b4f23f1415cc203f95202444c679bf898547b6d626873d841063a55c2" %}
+{% set version = "0.43.0b4" %}
+{% set sha256 = "75e19bb7836dc5d6329e3d5d07ebd16702446024d1e91de7a0d346e495d0baab" %}
 
 package:
   name: {{ name|lower }}
@@ -45,6 +45,7 @@ requirements:
     - llvm-openmp  # [osx and x86_64]
     - appnope >=0.1.3  # [osx]
     - colormath >=2.1
+    - h5io
     - imageio
     - ipython
     - keyring >=5
