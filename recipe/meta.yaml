@@ -1,6 +1,6 @@
 {% set name = "eelbrain" %}
-{% set version = "0.43.0b4" %}
-{% set sha256 = "75e19bb7836dc5d6329e3d5d07ebd16702446024d1e91de7a0d346e495d0baab" %}
+{% set version = "0.43.0b5" %}
+{% set sha256 = "a0b7d8fe1643d752420031e3a88c1f1313181ea3f0733152dab1f405dc6a25e3" %}
 
 package:
   name: {{ name|lower }}
@@ -36,7 +36,7 @@ requirements:
     - packaging
     - pip
     - setuptools >=70.1.0
-    - setuptools_scm >=6.2  # Required for embedding version
+    - setuptools_scm >=8  # Required for embedding version
     - cython >=3
     - numpy >=2
   run:
